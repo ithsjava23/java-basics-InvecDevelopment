@@ -20,21 +20,15 @@ public class App {
             choice = scanner.next().charAt(0);
 
             switch (choice) {
-                case '1':
-                    inmatning(scanner, elpriser);
-                    break;
-                case '2':
-                    break;
-                case '3':
-                    break;
-                case '4':
-                    break;
-                case 'e':
-                case 'E':
-                    System.out.print("\nProgrammet Avslutas");
-                    break;
-                default:
-                    System.out.print("\nError");
+                case '1' -> inmatning(scanner, elpriser);
+                case '2' -> {
+                }
+                case '3' -> {
+                }
+                case '4' -> {
+                }
+                case 'e', 'E' -> System.out.print("\nProgrammet Avslutas");
+                default -> System.out.print("\nError");
             }
 
         }            while (choice != 'e' && choice != 'E');
