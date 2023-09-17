@@ -26,8 +26,8 @@ public class App {
                 case '2' -> minMaxMedel(elpriser);
                 case '3' -> sortera(elpriser);
                 case '4' -> bästaLaddningstid(elpriser);
-                case 'e', 'E' -> System.out.print("\nProgrammet Avslutas");
-                default -> System.out.print("\nError");
+                case 'e', 'E' -> {System.out.print("\nProgrammet Avslutas");
+                return;}
             }
 
         } while (choice != 'e' && choice != 'E');
