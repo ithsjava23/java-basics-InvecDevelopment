@@ -21,8 +21,7 @@ public class App {
 
             switch (choice) {
                 case '1' -> inmatning(scanner, elpriser);
-                case '2' -> {
-                }
+                case '2' -> minMaxMedel(elpriser);
                 case '3' -> {
                 }
                 case '4' -> {
@@ -41,5 +40,14 @@ public class App {
             System.out.print("Timme " + i + ": ");
             elpriser[i] = scanner.nextInt();
         }
+    }
+    public static void minMaxMedel(int [] elpriser) {
+        int minPris = Arrays.stream(elpriser).min().getAsInt();
+        int maxPris = Arrays.stream(elpriser).max().getAsInt();
+        double medelPris = Arrays.stream(elpriser).average().getAsDouble();
+
+        System.out.print("\nLägsta pris: " + minPris + " öre/kWh");
+        System.out.print("\nHösta pris: " + maxPris + " öre/kWh");
+        System.out.print("\nMedelpris: " + medelPris + " öre/kWh");
     }
 }
