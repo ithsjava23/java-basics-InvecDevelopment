@@ -11,14 +11,15 @@ public class App {
         int[] elpriser = new int[24];
         //Meny+val
         do {
-            System.out.print("\nElpriser");
-            System.out.print("\n=======");
-            System.out.print("\n1. Inmatning");
-            System.out.print("\n2. Min, Max och Medel");
-            System.out.print("\n3. Sortera");
-            System.out.print("\n4. Bästa Laddningstid (4h)");
-            System.out.print("\ne. Avsluta");
-            System.out.print("\nVälj ett alternativ: ");
+            System.out.print("""
+
+                    Elpriser
+                    =======
+                    1. Inmatning
+                    2. Min, Max och Medel
+                    3. Sortera
+                    4. Bästa Laddningstid (4h)
+                    e. Avsluta""");
             choice = scanner.next().charAt(0);
 
             switch (choice) {
@@ -26,8 +27,7 @@ public class App {
                 case '2' -> minMaxMedel(elpriser);
                 case '3' -> sortera(elpriser);
                 case '4' -> bästaLaddningstid(elpriser);
-                case 'e', 'E' -> {System.out.print("\nProgrammet Avslutas");
-                return;}
+                case 'e', 'E' -> {return;}
             }
 
         } while (choice != 'e' && choice != 'E');
