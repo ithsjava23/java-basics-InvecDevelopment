@@ -1,6 +1,8 @@
 package org.example;
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public class App {
 
     public static void main(String[] args) {
@@ -22,8 +24,7 @@ public class App {
             switch (choice) {
                 case '1' -> inmatning(scanner, elpriser);
                 case '2' -> minMaxMedel(elpriser);
-                case '3' -> {
-                }
+                case '3' -> sortera(elpriser);
                 case '4' -> {
                 }
                 case 'e', 'E' -> System.out.print("\nProgrammet Avslutas");
@@ -35,6 +36,7 @@ public class App {
         scanner.close();
     }
     public static void inmatning(Scanner scanner, int [] elpriser) {
+        //Skapar en array och fyller den baserat på input
         System.out.print("\nInmatning av elpriser (i öre per Kwh):\n");
         for (int i = 0; i < elpriser.length; i++) {
             System.out.print("Timme " + i + ": ");
@@ -42,6 +44,7 @@ public class App {
         }
     }
     public static void minMaxMedel(int [] elpriser) {
+        //Kollar min max och medel i Arrayen
         int minPris = Arrays.stream(elpriser).min().getAsInt();
         int maxPris = Arrays.stream(elpriser).max().getAsInt();
         double medelPris = Arrays.stream(elpriser).average().getAsDouble();
@@ -49,5 +52,18 @@ public class App {
         System.out.print("\nLägsta pris: " + minPris + " öre/kWh");
         System.out.print("\nHösta pris: " + maxPris + " öre/kWh");
         System.out.print("\nMedelpris: " + medelPris + " öre/kWh");
+    }
+    public static void sortera(int[] elpriser) {
+        String[] tidpunkter = new String[elpriser.length];
+
+        for (int i = 0; i < tidpunkter.length; i++) {
+            tidpunkter[i] = String.format("%02d-%02d", i, (i+1) % 24);
+        }
+        //Använder lambda uttryck för att sortera
+        IntStream.range(0, elpriser.length)
+                .boxed()
+                .sorted((i, j) -> Integer.compare(elpriser[j], elpriser[i]))
+                .forEach(i -> System.out.print("\n" + tidpunkter[i] + " " + elpriser[i] + " öre/kWh"));
+
     }
 }
